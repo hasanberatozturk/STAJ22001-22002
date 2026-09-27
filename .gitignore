@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.env
+
+# Yerel modeller ve deney verileri GitHub'a yüklenmez.
+models/*.pt
+models/*.onnx
+models/*.engine
+data/
+sessions/
+runs/
+reports/
+archive/
+tmp/
+outputs/
+output/
+
+# IDE / işletim sistemi
+.vscode/
+.idea/
+.DS_Store
+Desktop.ini
+Thumbs.db
