@@ -1,0 +1,1 @@
+"""Kumaş kusur tespit kodları."""
