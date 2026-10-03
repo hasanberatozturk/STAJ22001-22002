@@ -99,6 +99,7 @@ src/defect_detection.py   Leke ve yırtık tespiti
 src/laser_detection.py    Lazer çizgisi ve kabarıklık hesabı
 tests/                    Temel davranış kontrolleri
 tools/                    Veri toplama, eğitim ve inceleme araçları
+staj1_deneyleri/           Bağımsız Staj-1 kamera ve lazer deney araçları
 models/                   Uygulamada kullanılan model ağırlıkları
 data/                     Toplanan ve etiketlenen görüntüler
 archive/                  Eski deneyler, eğitim çıktıları ve staj belgeleri
@@ -124,6 +125,10 @@ Değişkenler basit İngilizce adlar kullanır (`camera`, `last_frame`, `stain_s
 gibi); arayüz yazıları ve kod açıklamaları Türkçedir.
 
 ## Yardımcı araçlar
+
+Staj-1 kamera kalibrasyonu, pozlama taraması ve yerel yükselti deneyleri
+[staj1_deneyleri/README.md](staj1_deneyleri/README.md) içinde açıklanır.
+Bu araçlar arşiv kaynaklarından uyarlanmıştır; canlı uygulama bunları çağırmaz.
 
 | Komut | Amaç |
 | --- | --- |
