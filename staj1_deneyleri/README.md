@@ -1,16 +1,13 @@
 # Staj-1 deney araçları
 
-Bu klasör kamera ve çizgi lazer deneylerini ana uygulamadan ayrı tutar.
-`app.py`, `src/`, modeller ve canlı karar akışı değiştirilmemiştir.
+Bu klasör, kamera kalibrasyonu ve çizgi lazerle yüzey inceleme çalışmalarında
+kullanılan bağımsız deney araçlarını içerir. Araçlar canlı kumaş kusur tespit
+uygulamasından ayrı çalıştırılır; uygulamanın başlatılması için gerekli değildir.
 
-## Kaynak ve kapsam
+## İçerik
 
-Kodlar yerel arşivdeki
-`archive/staj_belgeleri/docs/Staj1_Eski_Sohbet_Kanitlari/kod_ve_terminal_kaynaklari/`
-dosyalarından uyarlanmıştır. Arşivdeki asıllar korunur. Bilgisayara özgü yollar
-kaldırılmış, giriş seçenekleri ve üzerine yazmayı engelleyen kontroller eklenmiştir.
-Bu sürüm, geçmişteki bir terminal oturumunun birebir kaydı veya rapordaki sayısal
-sonuçların yeniden üretildiğinin kanıtı değildir. Yeni çalıştırmalar yeni sonuç üretir.
+Çalışmalar üç temel amacı kapsar: kamera parametrelerini hesaplamak, uygun lazer
+pozlamasını incelemek ve yerel yüzey yükseltisinin lazer çizgisine etkisini ölçmek.
 
 | Dosya | İlgili çalışma | Ürettiği çıktı |
 | --- | --- | --- |
@@ -19,12 +16,11 @@ sonuçların yeniden üretildiğinin kanıtı değildir. Yeni çalıştırmalar 
 | `yerel_yukselti_cekimi.sh` | Düz yüzey ve 10 kat kâğıtla yerel yükselti | Dört koşulda üçer tekrar, toplam 12 JPEG ve metadata |
 | `yerel_yukselti_analizi.py` | Yerel çizgi sapması ve tekrar edilebilirlik | Profil CSV, sonuç JSON, özet PNG ve Markdown |
 
-Bunlar Random Forest, SVM veya YOLO eğitim kodları değildir.
-
 ## Python araçları
 
 Projenin sanal ortamını etkinleştirin. NumPy, OpenCV ve Pillow gereklidir;
 ana `requirements.txt` bu bağımlılıkları içerir. Komutları proje kökünde çalıştırın.
+Örneklerdeki giriş yollarını kendi görüntü klasörlerinize göre değiştirin.
 
 ### Kamera kalibrasyonu
 
@@ -36,9 +32,8 @@ Giriş dosyaları `CALv2_*.jpg` adında, aynı çözünürlükte olmalıdır.
 En az sekiz görüntüde desen bulunmalıdır. Farklı açılardan çekilmiş gerçek
 kalibrasyon görüntülerini kullanın; tek görüntünün kopyaları uygun değildir.
 
-**İç köşe sayısını fiziksel deseninizden kontrol edin.** Arşiv kaynak kodunda
-`8 x 6`, arşivdeki sayısal sonuç kaydında `9 x 7` iç köşe yazmaktadır.
-Bu uyuşmazlık nedeniyle varsayılan seçilmemiştir: `--ic-kose` zorunludur.
+`--ic-kose` zorunludur ve kullanılan desenin iç köşe sayısını belirtir.
+Bu değer kare sayısıyla karıştırılmamalıdır; fiziksel desen üzerinden kontrol edin.
 9 x 7 kareli desenin iç köşesi 8 x 6; 10 x 8 kareli desenin iç köşesi 9 x 7 olur.
 Yukarıdaki komut yalnızca 9 x 7 iç köşeli, 20 mm kareli desen için örnektir.
 
@@ -64,7 +59,7 @@ raporlar. Ölçüm milimetre cinsinden yükseklik veya kumaş kusuru sınıfland
 Sinyal/tekrar oranı, tekrar sapması sıfırken tanımsızdır ve JSON'da `null` olur.
 
 JSON'daki 30 cm kamera mesafesi, yaklaşık 10 cm lazer uzaklığı, yaklaşık 60 derece
-açı ve 2500 µs pozlama arşiv deneyinin sabit varsayımlarıdır; program bunları
+açı ve 2500 µs pozlama, kodda tanımlı deney düzeni değerleridir; program bunları
 görüntüden ölçmez veya JSON kamera metadata dosyasından okumaz. Başka düzenekte
 bu alanları deneyinizle eşleştirmeden ölçülmüş bilgi olarak kullanmayın.
 
@@ -90,7 +85,7 @@ bash staj1_deneyleri/yerel_yukselti_cekimi.sh /home/pi/deneyler
 Varsayılan çıktılar `output/staj1/pozlama/` ve `output/staj1/yukselti/`
 altındaki benzersiz klasörlere gider. Betikler lazeri GPIO ile kontrol etmez;
 kullanıcıdan lazeri açıp kapatmasını ve Enter ile onaylamasını ister.
-Kamera, numune ve aydınlatma sabit tutulmalıdır. Arşivden gelen beyaz dengesi,
+Kamera, numune ve aydınlatma sabit tutulmalıdır. Betiklerde tanımlı beyaz dengesi,
 odak ve pozlama ayarları her kamera/düzeneğe uygun olmayabilir; çekim öncesi kontrol edin.
 Lazer ışınına ve yansımasına doğrudan bakmayın.
 
@@ -100,6 +95,7 @@ Lazer ışınına ve yansımasına doğrudan bakmayın.
 python -m unittest discover -s staj1_deneyleri -p "test_*.py" -v
 ```
 
-Testler geçici sentetik görüntüler kullanır; fiziksel deney doğruluğunu veya
-rapor sonuçlarını doğrulamaz. Kamera ve lazer betikleri için gerçek donanımla
-ayrıca kontrol gerekir.
+Testler geçici sentetik görüntülerle giriş kontrollerini, yerel sapma hesabını ve
+mevcut çıktıların korunmasını denetler. Fiziksel ölçüm doğruluğu için kamera ve
+lazer düzeneğiyle ayrıca deney yapılmalıdır. Sonuçlar kullanılan görüntülere,
+kamera ayarlarına ve deney koşullarına bağlıdır.
