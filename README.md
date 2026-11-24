@@ -100,6 +100,7 @@ src/laser_detection.py    Lazer çizgisi ve kabarıklık hesabı
 tests/                    Temel davranış kontrolleri
 tools/                    Veri toplama, eğitim ve inceleme araçları
 staj1_deneyleri/           Bağımsız Staj-1 kamera ve lazer deney araçları
+staj2_deneyleri/           Staj-2 eşik, Random Forest ve SVM karşılaştırması
 models/                   Uygulamada kullanılan model ağırlıkları
 data/                     Toplanan ve etiketlenen görüntüler
 archive/                  Eski deneyler, eğitim çıktıları ve staj belgeleri
@@ -129,6 +130,8 @@ gibi); arayüz yazıları ve kod açıklamaları Türkçedir.
 Staj-1 kamera kalibrasyonu, pozlama taraması ve yerel yükselti deneyleri
 [staj1_deneyleri/README.md](staj1_deneyleri/README.md) içinde açıklanır.
 Bu araçlar arşiv kaynaklarından uyarlanmıştır; canlı uygulama bunları çağırmaz.
+Staj-2'deki eşik yöntemi, Random Forest ve SVM karşılaştırması
+[staj2_deneyleri/README.md](staj2_deneyleri/README.md) içinde açıklanır.
 
 | Komut | Amaç |
 | --- | --- |
