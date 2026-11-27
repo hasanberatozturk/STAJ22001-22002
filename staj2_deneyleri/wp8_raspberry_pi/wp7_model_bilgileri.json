@@ -1,0 +1,60 @@
+{
+  "hedef": "D00 normal (0) / D01-D05 geometrik kusur (1)",
+  "feature_columns": [
+    "sapma_medyan_px",
+    "sapma_p90_px",
+    "sapma_p95_px",
+    "sapma_p99_px",
+    "sapma_maks_px",
+    "sapma_std_px",
+    "sapma_aralik_px",
+    "egim_medyan_px",
+    "egim_p95_px",
+    "egim_maks_px",
+    "egrilik_p95_px",
+    "aktif_oran_0_5px",
+    "aktif_oran_1px",
+    "aktif_oran_2px",
+    "aktif_oran_5px",
+    "en_uzun_aktif_seri_1px",
+    "lazer_gucu_medyan",
+    "lazer_gucu_p10",
+    "lazer_gucu_std",
+    "zayif_lazer_orani_3",
+    "zayif_lazer_orani_5",
+    "zayif_lazer_orani_10",
+    "referans_gurultu_p95_px",
+    "sapma_p95_gurultu_orani",
+    "gurultu_ustu_aktif_oran",
+    "lazer_kayip_orani"
+  ],
+  "train_samples": [
+    "K001",
+    "K004",
+    "K006",
+    "K007",
+    "K009"
+  ],
+  "validation_samples": [
+    "K003"
+  ],
+  "test_samples": [
+    "K011"
+  ],
+  "threshold": {
+    "feature": "sapma_std_px",
+    "threshold": 0.43112867667785537
+  },
+  "random_forest": {
+    "n_estimators": 400,
+    "max_depth": null,
+    "min_samples_leaf": 4,
+    "max_features": 0.7
+  },
+  "svm": {
+    "C": 0.1,
+    "gamma": "scale",
+    "kernel": "rbf"
+  },
+  "seed": 42
+}
