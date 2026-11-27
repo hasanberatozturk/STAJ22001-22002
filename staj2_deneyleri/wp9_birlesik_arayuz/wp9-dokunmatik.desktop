@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=WP9 Kumas Kusur Tespit
+Comment=Dokunmatik canli kumas kusur tespit arayuzu
+Exec=/bin/bash -lc "sleep 8; exec $HOME/.local/bin/wp9-baslat >>$HOME/wp9-autostart.log 2>&1"
+Terminal=false
+X-GNOME-Autostart-enabled=true
+StartupNotify=false

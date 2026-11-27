@@ -101,6 +101,9 @@ tests/                    Temel davranış kontrolleri
 tools/                    Veri toplama, eğitim ve inceleme araçları
 staj1_deneyleri/           Bağımsız Staj-1 kamera ve lazer deney araçları
 staj2_deneyleri/           Staj-2 eşik, Random Forest ve SVM karşılaştırması
+  wp8_raspberry_pi/        Raspberry Pi canlı tahmin, yeniden eğitim, optik doğrulama, R3
+  wp9_birlesik_arayuz/     Raspberry Pi dokunmatik birleşik arayüz ve R4 kabarıklık modülü
+KOD_REHBERI.md            Staj günü → dosya → satır aralığı eşlemesi
 models/                   Uygulamada kullanılan model ağırlıkları
 data/                     Toplanan ve etiketlenen görüntüler
 archive/                  Eski deneyler, eğitim çıktıları ve staj belgeleri
@@ -132,6 +135,10 @@ Staj-1 kamera kalibrasyonu, pozlama taraması ve yerel yükselti deneyleri
 Bu araçlar arşiv kaynaklarından uyarlanmıştır; canlı uygulama bunları çağırmaz.
 Staj-2'deki eşik yöntemi, Random Forest ve SVM karşılaştırması
 [staj2_deneyleri/README.md](staj2_deneyleri/README.md) içinde açıklanır.
+Raspberry Pi'de çalışan canlı sistem ve birleşik arayüz betikleri
+`staj2_deneyleri/wp8_raspberry_pi/` ve `staj2_deneyleri/wp9_birlesik_arayuz/`
+altında arşivlenmiştir. Defterdeki her günün hangi dosyanın hangi satırlarında
+olduğu [KOD_REHBERI.md](KOD_REHBERI.md) içinde listelenir.
 
 | Komut | Amaç |
 | --- | --- |
